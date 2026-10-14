@@ -1,0 +1,4 @@
+config SHIELD_TOUCHPAD_I2CHID
+    bool "touchpad_i2chid shield"
+    def_bool $(shields_list_contains,touchpad_i2chid)
+    select I2C
