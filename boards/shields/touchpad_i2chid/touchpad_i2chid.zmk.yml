@@ -1,6 +1,6 @@
 file_format: "1"
 id: touchpad_i2chid
-name: touchpad_i2chid
+name: ble_trackpad
 type: shield
 requires: [promicro_nrf52840]
 exposes: [i2c]
