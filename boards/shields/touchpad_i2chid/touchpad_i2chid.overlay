@@ -1,14 +1,21 @@
 / {
+    touchpad_listener {
+        compatible = "zmk,input-listener";
+        device = <&mytouch>;
+    };
 };
 
 &pro_micro_i2c {
     status = "okay";
     clock-frequency = <I2C_BITRATE_FAST>;
 
-    touchpad@38 {
-        compatible = "hid-over-i2c";
+    mytouch: touchpad@38 {
         reg = <0x38>;
-        hid-descr-addr = <0x01>;
         interrupt-gpios = <&pro_micro 7 GPIO_ACTIVE_LOW>;
+        // ⚠️这里重点！把hid-over-i2c替换成你触控板真实驱动！
+        // 示例：FT6236电容触控屏：compatible = "focaltech,ft6236";
+        // GT911: compatible = "goodix,gt911";
+        compatible = "focaltech,ft6236";
+        status = "okay";
     };
 };
